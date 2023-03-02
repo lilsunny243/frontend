@@ -16,7 +16,11 @@ import { SearchWrapper, PageContainer } from '../src/pages/Home/components';
 import HeroHeadline from '@/pages/Home/components/HeroHeadline';
 import Globe from '@/components/Globe';
 import LamboExplainer from '@/pages/Home/components/LamboExplainer';
-import MergeAnnouncement from '@/pages/MinerDashboard/Announcements/MergeAnnouncement';
+
+import SnowFall from 'react-snowfall';
+import { ShowBetweenDates } from '@/components/ShowBetweenDates';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 const HeroGlow1 = styled.div`
   display: none;
@@ -105,13 +109,20 @@ export const HomePage = () => {
           },
         ]}
       />
-      <MergeAnnouncement />
       <div
         style={{
           position: 'relative',
         }}
       >
         <Hero>
+          <ShowBetweenDates
+            start={`${CURRENT_YEAR} 1/15`}
+            end={`${CURRENT_YEAR} 12/15`}
+            mode="outside"
+          >
+            <SnowFall style={{ zIndex: 0 }} />
+          </ShowBetweenDates>
+
           <Content>
             <HeroLayout>
               <HeroLeft>

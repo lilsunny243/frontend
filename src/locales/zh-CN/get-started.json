@@ -2,12 +2,37 @@
   "list": {
     "head_title": "开始挖矿",
     "title": "开始挖矿",
-    "nicehash_rental_button": "Nicehash 设置"
+    "nicehash_rental_button": "Nicehash 设置",
+    "pool_details": "矿池详情",
+    "start_today": "现在开始挖矿",
+    "begin_experience": "选择你的设置开启你的Flexpool体验",
+    "view_button": "查看 {{name}} 教程",
+    "zil_boost": "可选: 双挖 Zilliqa 提升你的收益",
+    "perks": [
+      {
+        "title": "来自专业的团队",
+        "description": "Flexpool.io 团队成员都是有着多年经验的专家"
+      },
+      {
+        "title": "专业和有帮助的客服团队",
+        "description": "在一天内获得最专业的帮助"
+      },
+      {
+        "title": "收益最大化",
+        "description": "从挖矿中获得最多的收益"
+      },
+      {
+        "title": "最棒的网站体验",
+        "description": "在一个现代和简洁的网站上浏览你所有的数据"
+      }
+    ]
   },
   "detail": {
     "title": "{{coin}} 挖矿教程",
     "note": "注：",
     "invalid": "{{value}}无效",
+    "more_about": "更多关于",
+    "endpoint_china": "为中国大陆优化服务器",
     "wallet": {
       "title": "创建钱包地址",
       "desc_one": "支持以太币的交易所一般会提供钱包充值，例如 <binance>币安 （推荐链接）</binance>、火币网、<coinbase>Coinbase</coinbase> 等。",
@@ -33,6 +58,7 @@
     },
     "ports": {
       "title": "端口",
+      "additional_ports": "其他可用端口",
       "description": "我们建议使用SSL加密端口来连接服务器。 <more>了解非安全端口的风险</more>。 <strong>注意</strong>: 使用 SSL端口不会影响延迟份额率。",
       "ssl_port": "SSL加密端口",
       "tcp_port": "TCP端口",
@@ -52,7 +78,8 @@
     },
     "software": {
       "title": "选择挖矿软件",
-      "fee": "费用"
+      "fee": "费用",
+      "promo_fee": "promotional fee, subject to change in the near future"
     },
     "view": {
       "title": "矿机监控及收益查看",
@@ -63,6 +90,10 @@
   "detail_zil": {
     "title": "Zilliqa mining",
     "select_dual_mining": "Select your dual mining config",
+    "compatible_mode": "Compatible Mode",
+    "not_seeing": "Not seeing your miner here?",
+    "we_encourage": "We encourage switching to the ones below, but in case you can't, please refer to our <compatible>Compatible Mode</compatible> guide.",
+    "switch_zmp": "Please consider switching to a miner that supports ZMP for better profitability.",
     "pool_details": [
       {
         "key": "Reward Scheme",
@@ -286,7 +317,9 @@
   "cmd_keys": {
     "CLOSEST_SERVER": "最近服务器地址",
     "WALLET_ADDRESS": "钱包地址",
-    "WORKER_NAME": "矿机名字"
+    "WORKER_NAME": "矿机名字",
+    "ZIL_WALLET_ADDRESS": "ZIL_WALLET_ADDRESS",
+    "ETC_WALLET_ADDRESS": "ETC_WALLET_ADDRESS"
   },
   "nicehash": {
     "head_title": "Nicehash 设置",

@@ -1,13 +1,37 @@
 {
   "list": {
     "head_title": "Mine met ons mee",
-    "title": "Begin vandaag met minen op Flexpool!",
-    "nicehash_rental_button": "NiceHash Rental"
+    "title": "Get started",
+    "nicehash_rental_button": "NiceHash Rental",
+    "pool_details": "Pool Details",
+    "start_today": "Start Mining Today",
+    "begin_experience": "Begin your Flexpool experience by choosing your setup",
+    "view_button": "View {{name}} Guide",
+    "zil_boost": "Optional: Boost your earnings by dual mining Ziliqa.",
+    "perks": [
+      {
+        "title": "Built by professionals",
+        "description": "Flexpool.io is ran by industry specialists with years of experience"
+      },
+      {
+        "title": "Professional and helpful support team",
+        "description": "Get assistance by professional support team within a day"
+      },
+      {
+        "title": "Maximum earnings",
+        "description": "Extract the most from mining"
+      },
+      {
+        "title": "Best-in-class web experience",
+        "description": "A clean and modern interface with all your mining stats"
+      }
+    ]
   },
   "detail": {
     "title": "{{coin}} mining",
     "note": "Note:",
     "invalid": "{{value}} is invalid",
+    "more_about": "More about",
     "wallet": {
       "title": "Neem je wallet address",
       "desc_one": "De makkelijkste manier om een wallet te bekomen is door je te registreren op een cryptocurrency exchange zoals <binance>Binance (Ref)</binance> of <coinbase>Coinbase</coinbase>.",
@@ -33,6 +57,7 @@
     },
     "ports": {
       "title": "Poorten",
+      "additional_ports": "Additional ports available",
       "description": "We raden iedereen aan om een veilige netwerkpoort te gebruiken bij het verbinden met Flexpool servers. <more>Lees meer over waarom u best geen onbeveiligde netwerkpoorten gebruikt</more>. <strong>BELANGRIJK</strong>: SSL gebruiken verhoogt de stale rate niet.",
       "ssl_port": "Veilige SSL netwerkpoort",
       "tcp_port": "TCP netwerkpoort",
@@ -52,7 +77,8 @@
     },
     "software": {
       "title": "Kies je mining software",
-      "fee": "Kost"
+      "fee": "Kost",
+      "promo_fee": "promotional fee, subject to change in the near future"
     },
     "view": {
       "title": "Bekijk je statistieken",
@@ -63,6 +89,10 @@
   "detail_zil": {
     "title": "Zilliqa mining",
     "select_dual_mining": "Select your dual mining config",
+    "compatible_mode": "Compatible Mode",
+    "not_seeing": "Not seeing your miner here?",
+    "we_encourage": "We encourage switching to the ones below, but in case you can't, please refer to our <compatible>Compatible Mode</compatible> guide.",
+    "switch_zmp": "Please consider switching to a miner that supports ZMP for better profitability.",
     "pool_details": [
       {
         "key": "Reward Scheme",
@@ -286,7 +316,9 @@
   "cmd_keys": {
     "CLOSEST_SERVER": "DICHTSBIJZIJNDE_SERVER",
     "WALLET_ADDRESS": "WALLET_ADDRESS",
-    "WORKER_NAME": "WORKER_NAAM"
+    "WORKER_NAME": "WORKER_NAAM",
+    "ZIL_WALLET_ADDRESS": "ZIL_WALLET_ADDRESS",
+    "ETC_WALLET_ADDRESS": "ETC_WALLET_ADDRESS"
   },
   "nicehash": {
     "head_title": "NiceHash gids om op Flexpool te minen",

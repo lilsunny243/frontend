@@ -83,6 +83,10 @@ export const StatsChart = React.memo(
 
     useEffect(() => {
       if (data && !isFetching) {
+        if (chartRef.current) {
+          chartRef.current.dispose();
+        }
+
         chartRef.current = create('difficultyChart', XYChart);
 
         chartRef.current.colors.list = [color('#0069ff')];
@@ -126,7 +130,7 @@ export const StatsChart = React.memo(
 
         difficultySeries.tooltipText = `${chartType}: {valueY.value.formatNumber("#.0 a'${unit}'")}`;
 
-        if (coin === 'zil') {
+        if (coin === 'zil' && type === 'blocktime') {
           difficultySeries.tooltipText = `${chartType}: {valueY.value.formatDuration("h 'hr' m 'min' s 'sec'")}`;
         }
 
