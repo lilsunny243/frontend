@@ -98,6 +98,7 @@ function BlocksPage() {
   }, [activeCoin?.ticker]);
 
   const isZil = isMounted ? activeCoinTicker === 'zil' : false;
+  const hideBlockChart = isMounted ? activeCoinTicker === 'zil' : false;
 
   return (
     <Page>
@@ -207,7 +208,7 @@ function BlocksPage() {
         </StatBoxContainer>
         <Spacer />
 
-        {!isZil && <DynamicBlocksChart />}
+        {!hideBlockChart && <DynamicBlocksChart />}
 
         <BlocksSection />
       </Content>

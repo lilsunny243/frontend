@@ -155,18 +155,6 @@ const PoolGuideOptions = ({
           })}
         </ViewGuideButton>
       </FlexEnd>
-      {coin === 'etc' && (
-        <HelpText
-          onClick={() => {
-            document.getElementById(`coin-tab-${2}-anchor`)?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-            });
-          }}
-        >
-          {t('list.zil_boost')}
-        </HelpText>
-      )}
     </>
   );
 };
@@ -278,7 +266,7 @@ const PoolPerks = () => {
 export const MiningGuideSection = ({ ticker, name, coin }: Props) => {
   const { t } = useTranslation('get-started');
 
-  const poolDetails = t(`detail_${ticker.toLowerCase()}.pool_details`, {
+  var poolDetails = t(`detail_${ticker.toLowerCase()}.pool_details`, {
     returnObjects: true,
   }) as { key: string; value: string }[];
 

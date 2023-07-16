@@ -1,3 +1,4 @@
+import { checksumIron } from '@/utils/validators/ironWalletAddress.validator';
 import { checksumETH } from 'src/utils/validators/ethWalletAddress.validator';
 import { checksumXCH } from 'src/utils/validators/xchWalletAddress.validator';
 import { checksumZIL } from 'src/utils/validators/zilWalletAddress.validator';
@@ -31,12 +32,17 @@ export type MineableCoin = {
   algorithm: string;
   nicehash_algorithm: null | string;
   regions: MineableCoinRegion[];
+  configs?: Configs;
   description: string;
   walletAddressExample: string;
   regex: RegExp;
   validator: (address: string) => null | string;
   hardware: MineableCoinHardware[];
   nicehashAvailable: boolean;
+};
+
+type Configs = {
+  showBlocksRegion?: boolean;
 };
 
 export const mineableCoins: MineableCoin[] = [
@@ -50,6 +56,9 @@ export const mineableCoins: MineableCoin[] = [
     validator: checksumETH,
     walletAddressExample: '0xBf08F613ccE234c96e0e889a0B660bD819D23795',
     nicehashAvailable: true,
+    configs: {
+      showBlocksRegion: true,
+    },
     regions: [
       {
         domain: 'etc-us-east.flexpool.io',
@@ -84,7 +93,7 @@ export const mineableCoins: MineableCoin[] = [
             os: ['windows', 'linux', 'hiveos'],
             title: 'TeamRedMiner',
             key: 'teamreadminer',
-            description: 'Best miner for AMD GPUs',
+            description: '',
             fee: [0.75, 1],
             compatibleGpus: ['AMD'],
             downloadLink: 'https://github.com/todxx/teamredminer/releases',
@@ -94,7 +103,7 @@ export const mineableCoins: MineableCoin[] = [
             os: ['windows', 'linux', 'hiveos'],
             title: 'T-Rex Miner',
             key: 'trexminer',
-            description: 'Best miner for NVIDIA 20/30 Series GPUs',
+            description: '',
             fee: [1],
             compatibleGpus: ['NVIDIA'],
             downloadLink: 'https://trex-miner.com/',
@@ -104,7 +113,7 @@ export const mineableCoins: MineableCoin[] = [
             os: ['windows', 'linux', 'hiveos'],
             title: 'lolMiner',
             key: 'lolminer',
-            description: 'Best miner for 4GB zombie mode.',
+            description: '',
             fee: [0.75],
             compatibleGpus: ['AMD', 'NVIDIA'],
             downloadLink:
@@ -115,7 +124,7 @@ export const mineableCoins: MineableCoin[] = [
             os: ['windows', 'linux', 'hiveos'],
             title: 'PhoenixMiner',
             key: 'phoenixminer',
-            description: 'Proprietary Ethash miner with low devfee.',
+            description: '',
             fee: [0.65],
             compatibleGpus: ['AMD', 'NVIDIA'],
             downloadLink: 'https://phoenixminer.info/downloads/',
@@ -125,7 +134,7 @@ export const mineableCoins: MineableCoin[] = [
             os: ['windows', 'linux', 'hiveos'],
             title: 'GMiner',
             key: 'gminer',
-            description: 'Actively developed and stable miner.',
+            description: '',
             compatibleGpus: ['AMD', 'NVIDIA'],
             fee: [1],
             downloadLink:
@@ -173,66 +182,71 @@ export const mineableCoins: MineableCoin[] = [
     ],
   },
   {
-    name: 'Zilliqa',
-    ticker: 'zil',
-    algorithm: 'Ethash',
+    name: 'Iron Fish',
+    ticker: 'iron',
+    algorithm: 'Blake3',
     nicehash_algorithm: null,
     description: '',
-    regex: /^zil1[qpzry9x8gf2tvdw0s3jn54khce6mua7l]{38}$/g,
-    validator: checksumZIL,
-    walletAddressExample: 'zil102n74869xnvdwq3yh8p0k9jjgtejruft268tg8',
+    regex: /^[A-Fa-f0-9]{64}(\+[a-zA-Z0-9]{1,32})?$/,
+    validator: checksumIron,
+    walletAddressExample:
+      '2aa206fcbe1d1d86b3db2ec6e80aae6c181f633b42e4df02a8e7997f0f59c4dd',
     nicehashAvailable: false,
     regions: [
       {
-        domain: 'zil.flexpool.io',
-        code: 'zil',
-        imageCode: 'worldwide',
+        domain: 'iron.fpmp.net',
+        code: 'de',
+        imageCode: 'de',
+        high_diff_avail: false,
       },
     ],
     hardware: [
       {
-        title: 'GPU Dual Mining',
-        key: 'dual',
+        title: 'GPU Standard Mining',
+        key: 'GPU',
         miners: [
-          {
-            os: ['windows', 'linux', 'hiveos'],
-            title: 'GMiner',
-            key: 'gminer',
-            description: 'Actively developed and stable miner.',
-            compatibleGpus: ['AMD', 'NVIDIA'],
-            fee: [1],
-            downloadLink:
-              'https://github.com/develsoftware/GMinerRelease/releases',
-            cmd: 'miner.exe -a etc --ssl 1 -s CLOSEST_SERVER:5555 -u MAIN_WALLET_ADDRESS.WORKER_NAME --ssl 1 -s BACKUP_SERVER:5555 -u MAIN_WALLET_ADDRESS.WORKER_NAME --zilserver zmp://zil.flexpool.io --ziluser DUAL_WALLET_ADDRESS',
-          },
           {
             os: ['windows', 'linux'],
             title: 'BzMiner',
             key: 'bzminer',
-            description:
-              'Fast Windows/Linux miner with remote management and lowest 0.5% dev fee! (0% fee on ZIL)',
-            fee: [0.5],
+            description: '',
+            fee: [1],
             compatibleGpus: ['AMD', 'NVIDIA'],
             downloadLink: 'https://github.com/bzminer/bzminer/releases',
-            cmd: 'bzminer.exe -a ALGO -w MAIN_WALLET_ADDRESS.WORKER_NAME -p  ethstratum+ssl://CLOSEST_SERVER:5555 ethstratum+ssl://BACKUP_SERVER:5555 --a2 zil --w2 DUAL_WALLET_ADDRESS.WORKER_NAME --p2 zmp://zil.flexpool.io --log_date 1',
+            cmd: 'bzminer.exe -a ironfish -w WALLET_ADDRESS.WORKER_NAME -p stratum+tcp://iron.fpmp.net:8888 --nc 1',
           },
           {
             os: ['windows', 'linux'],
-            title: ' Rigel Miner',
+            title: 'Rigel Miner',
             key: 'rigelminer',
-            description: 'Miner optimized for NVIDIA GPUs.',
+            description: '',
             fee: [0.7],
             compatibleGpus: ['NVIDIA'],
             downloadLink: 'https://github.com/rigelminer/rigel/releases',
-            cmd: 'rigel.exe -a etchash+zil -o ethproxy+ssl://CLOSEST_SERVER:5555 -o ethproxy+ssl://BACKUP_SERVER:5555 -u [1]MAIN_WALLET_ADDRESS -o [2]zmp://zil.flexpool.io -u DUAL_WALLET_ADDRESS -w WORKER_NAME',
+            cmd: 'rigel.exe -a ironfish -o stratum+tcp://iron.fpmp.net:8888 -u WALLET_ADDRESS -w WORKER_NAME',
+          },
+          {
+            os: ['windows', 'linux', 'hiveos'],
+            title: 'TeamRedMiner',
+            key: 'teamreadminer',
+            description: '',
+            fee: [0.75, 1],
+            compatibleGpus: ['AMD'],
+            downloadLink: 'https://github.com/todxx/teamredminer/releases',
+            cmd: 'teamredminer.exe -a ironfish -o stratum+tcp://iron.fpmp.net:8888 -u WALLET_ADDRESS.WORKER_NAME -p x --fan_control',
+          },
+          {
+            os: ['windows', 'linux', 'hiveos'],
+            title: 'lolMiner',
+            key: 'lolminer',
+            description: '',
+            fee: [0.75],
+            compatibleGpus: ['AMD', 'NVIDIA'],
+            downloadLink:
+              'https://github.com/Lolliedieb/lolMiner-releases/releases',
+            cmd: 'lolMiner.exe --algo IRONFISH -p stratum+tcp://iron.fpmp.net:8888 -u WALLET_ADDRESS.WORKER_NAME',
           },
         ],
-      },
-
-      {
-        title: 'ASIC Dual Mining',
-        key: 'dual-asic',
-        miners: [],
       },
     ],
   },

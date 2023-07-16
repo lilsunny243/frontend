@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useQueryClient } from 'react-query';
 import { NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
-import { useTranslation } from 'next-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 
@@ -36,6 +36,7 @@ import { PayoutsOnlyNote } from '@/pages/MinerDashboard/Header/PayoutsOnlyNote';
 import styled from 'styled-components';
 import { FaChartBar, FaCube, FaWallet } from 'react-icons/fa';
 import { getChecksumByTicker } from '@/utils/validators/checksum';
+import { LinkOut } from '@/components/LinkOut';
 
 const DONATION_ADDRESS = '0x165CD37b4C644C2921454429E7F9358d18A45e14';
 
@@ -193,6 +194,78 @@ export const MinerDashboardPageContent: React.FC<{
               title: `${address}`,
             }}
           />
+          {coinTicker === 'xch' && (
+            <AnnouncementBar id="gigahorse-flexfarmer" variant="success">
+              {t('announcements.gigahorse.compressed_plots_support')}{' '}
+              <LinkOut
+                href="https://farmer.flexpool.io/gigahorse"
+                style={{
+                  color: 'white',
+                  textDecoration: 'underline',
+                }}
+              >
+                {t('announcements.gigahorse.learn_more')}
+              </LinkOut>
+            </AnnouncementBar>
+          )}
+
+          {coinTicker === 'zil' && (
+            <AnnouncementBar id="zil_delist" variant="primary">
+              <b>{t('announcements.zil_delist.attention')}</b>
+
+              <Spacer size="sm" />
+
+              <div
+                style={{
+                  width: '90%',
+                  margin: '0 auto',
+                  lineHeight: 1.4,
+                }}
+              >
+                <Trans
+                  t={t}
+                  i18nKey="announcements.zil_delist.detail"
+                  components={{
+                    b: <b />,
+                    br: <br />,
+                    reddit_link: (
+                      <LinkOut
+                        href="https://www.reddit.com/r/Flexpool/comments/138m46o/flexpoolio_zilliqa_zil_delisting_announcement_on/"
+                        style={{
+                          color: 'white',
+                          textDecoration: 'underline',
+                        }}
+                      />
+                    ),
+                  }}
+                />
+              </div>
+            </AnnouncementBar>
+          )}
+
+          {coinTicker === 'xch' && (
+            <AnnouncementBar id="xch-fork-jul" variant="primary">
+              <b>{t('announcements.xch_fork.attention')}</b>
+              <Spacer size="sm" />
+              <div
+                style={{
+                  width: '90%',
+                  margin: '0 auto',
+                  lineHeight: 1.4,
+                }}
+              >
+                <Trans
+                  t={t}
+                  i18nKey="announcements.xch_fork.detail"
+                  components={{
+                    b: <b />,
+                    br: <br />,
+                  }}
+                />
+              </div>
+            </AnnouncementBar>
+          )}
+
           {address === DONATION_ADDRESS && (
             <DonationAnnouncement
               id="donation-dashboard"
@@ -232,7 +305,7 @@ export const MinerDashboardPageContent: React.FC<{
               <>
                 <MinerDetails coin={activeCoin} address={address} />
                 <HeaderStats coin={coinTicker} address={address} />
-                {isPayoutOnly && <PayoutsOnlyNote />}
+                {/* {isPayoutOnly && <PayoutsOnlyNote />} */}
               </>
             )}
           </Content>
@@ -392,20 +465,28 @@ export default MinerDashboardPage;
 export type AddressStatus = 'not-found' | 'pending' | 'ready';
 
 export async function getServerSideProps({ query, locale }) {
-  const { coin, address } = query;
+  var { coin, address } = query;
 
-  const checkSum = getChecksumByTicker(query.coin)(query.address);
+  // This is a fix to handle IRON Memo address, e.g ADDRESS+MEMO
+  // When deployed to vercel, any "+" will be replaced with space
+  // This doesn't happen in dev.
+  // https://github.com/orgs/vercel/discussions/133#discussioncomment-3699061
+  var parsedAddress = address.replace(/ /g, '+');
 
-  if (checkSum === null) {
-    return {
-      redirect: {
-        destination: '/not-found',
-        permanent: false,
-      },
-    };
+  if (query.coin) {
+    const checkSum = getChecksumByTicker(query.coin)(parsedAddress);
+    if (checkSum === null) {
+      return {
+        redirect: {
+          destination: '/not-found',
+          permanent: false,
+        },
+      };
+    }
+    parsedAddress = checkSum;
   }
 
-  const result = await getLocateAddress(address);
+  const result = await getLocateAddress(parsedAddress);
 
   let status: AddressStatus = 'ready';
 
@@ -424,7 +505,7 @@ export async function getServerSideProps({ query, locale }) {
         'cookie-consent',
       ])),
       coinTicker: coin,
-      address,
+      address: parsedAddress,
       status,
     },
   };

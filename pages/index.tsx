@@ -1,6 +1,6 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
-import { useTranslation } from 'next-i18next';
+import { useTranslation, Trans } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styled from 'styled-components';
 import Image from 'next/image';
@@ -19,6 +19,8 @@ import LamboExplainer from '@/pages/Home/components/LamboExplainer';
 
 import SnowFall from 'react-snowfall';
 import { ShowBetweenDates } from '@/components/ShowBetweenDates';
+import AnnouncementBar from '@/components/AnnouncementBar';
+import { LinkOut } from '@/components/LinkOut';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -91,6 +93,7 @@ const HeroSubHeadline = styled.div`
 export const HomePage = () => {
   const { t, i18n } = useTranslation('home');
   const { t: seoT } = useTranslation('seo');
+  const { t: dashboardT } = useTranslation('dashboard');
 
   return (
     <PageContainer>
@@ -109,6 +112,9 @@ export const HomePage = () => {
           },
         ]}
       />
+
+      {/* Announcements go here */}
+
       <div
         style={{
           position: 'relative',

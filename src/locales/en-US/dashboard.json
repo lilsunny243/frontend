@@ -26,7 +26,7 @@
     "difficulty": {
       "title": "Difficulty Settings",
       "title_sidebar": "Difficulty",
-      "warning": "The adjustable difficulty is a feature for advanced users only. We strongly recommend keeping 1 unless you have specific requirements. Please do not change the difficulty unless you know what you are doing.",
+      "warning": "The adjustable difficulty is a feature for advanced users only. We strongly recommend keeping 1 unless you have specific requirements. Please do not change the difficulty unless you know what you are doing. For compressed plots, it is suggested to change difficulty to 18 or higher.",
       "check_difficulty": "Check current difficulty",
       "update_difficulty": "Update difficulty",
       "acknowledge": "I acknowledge that higher difficulty will make the effective space calculations less precise.",
@@ -270,7 +270,31 @@
     }
   },
   "announcements": {
-    "the_merge": "The Merge has been completed as of September 16, 2022, at 06:41 UTC.  Ethereum mining is  longer possible.<br/>Payouts will still happen if you have met your minimum or applied for an exception.  Unpaid balances will be maintained until at least December 15, 2022. Please read our our <merge>official announcement</merge> for details."
+    "the_merge": "The Merge has been completed as of September 16, 2022, at 06:41 UTC.  Ethereum mining is  longer possible.<br/>Payouts will still happen if you have met your minimum or applied for an exception.  Unpaid balances will be maintained until at least December 15, 2022. Please read our our <merge>official announcement</merge> for details.",
+    "gigahorse": {
+      "compressed_plots_support": "Gigahorse compressed plots are now available in FlexFarmer.",
+      "learn_more": "Learn more"
+    },
+    "gminer_flaw": {
+      "attention": "Attention GMiner Zilliqa (via ZMP) Users",
+      "detail": "GMiner versions 3.28 and earlier have a flaw that prevents automatic reconnection to the pool following server restarts, which are standard procedures during software or server upgrades. If you see your ZIL hashrate on GMiner suddenly disappear, <b>you'll need to restart it manually every time this happens until GMiner developers fix this</b>. You can also switch to other miners, or use Compatible Mode by <guide>following our guide</guide>."
+    },
+    "e9_issue": {
+      "attention": "Attention ZIL Miners",
+      "detail": "On February 26th 2023, we announced that we implemented support for E9 Pro ASICs to mine ZIL. Unfortunately, it turned out that E9 Pro was never supported, and it was producing invalid shares only that did not contribute to pool rewards. Normally, invalid shares are rejected, but there turned out to be a software bug that allowed invalid shares to slip through under certain circumstances. <br/><br/> Rewards for E9 Pro's dead weight were distributed and paid according to the PPLNS reward scheme, and given that E9 Pro ASICs did not contribute to the pool, regular miners ended up substituting them by receiving 5-10% fewer rewards on average. <b>To compensate for this, we charge no combined pool + operations fee for our Zilliqa (ZIL) pool for the entire month from March 18th 2023 until April 18th 2023, which is roughly equivalent to 19%.</b><br/><br/> <reddit_link>Read the full statement here for more information.</reddit_link>"
+    },
+    "zil_upgrade": {
+      "attention": "Attention ZIL Miners",
+      "detail": "On April 25th, the ZIL network will be undergoing a major upgrade.<br/><b>This will make mining unavailable for roughly a day.</b><br/><br/><zil_link>Read the official statement from Zilliqa.</zil_link>"
+    },
+    "zil_delist": {
+      "attention": "Zilliqa (ZIL) was delisted from Flexpool.io",
+      "detail": "On May 20th, 2023, after a two-week notice, our Zilliqa (ZIL) pool was shut down. You can read more on what made us delist Zilliqa (ZIL) and what are our following plans in our <reddit_link>announcement</reddit_link>."
+    },
+    "xch_fork": {
+      "attention": "Chia (XCH) July Soft Fork Reminder",
+      "detail": "The Chia soft fork has happened on block 3,886,635. If you are farming with a Chia node, <b>you are required to update it to v1.8.0 or higher</b>. Otherwise, you may produce invalid blocks.<br/><br/>FlexFarmer users who are using our hosted blockchain bridge do not need to update."
+    }
   },
   "payout_only_mode_note": {
     "title": "The pool is in payout-only mode",

@@ -26,7 +26,7 @@
     "difficulty": {
       "title": "难度设置",
       "title_sidebar": "全网难度",
-      "warning": "可调整的难度仅适用于高级用户。除非您有特殊要求，否则我们强烈建议保留 1。除非您知道自己在做什么，否则请不要更改难度。",
+      "warning": "可调整的难度仅适用于高级用户。除非您有特殊要求，否则我们强烈建议保留 1。除非您知道自己在做什么，否则请不要更改难度。对于 compressed plots, 建议你设置 18 或以上。",
       "check_difficulty": "检查当前难度",
       "update_difficulty": "份额难度",
       "acknowledge": "更高的难度会降低有效空间计算的精确度。",
@@ -270,7 +270,31 @@
     }
   },
   "announcements": {
-    "the_merge": "以太坊合并已经在 9 月 16 日，06:41 UTC 时完成。以太坊已经不可以被挖矿。<br/>如果您的余额符合最低要求，他们将被支出。未支付的余额我们将为您维护到至少 12 月 15 日 2022. 更多细节请阅读我们的<merge>官方公告</merge>。"
+    "the_merge": "以太坊合并已经在 9 月 16 日，06:41 UTC 时完成。以太坊已经不可以被挖矿。<br/>如果您的余额符合最低要求，他们将被支出。未支付的余额我们将为您维护到至少 12 月 15 日 2022. 更多细节请阅读我们的<merge>官方公告</merge>。",
+    "gigahorse": {
+      "compressed_plots_support": "FlexFarmer 现已支持 Gigahorse compressed plots。",
+      "learn_more": "学习更多"
+    },
+    "gminer_flaw": {
+      "attention": "请注意 GMiner Zilliqa (使用 ZMP) 用户",
+      "detail": "GMiner 3.28及早期版本存在一个缺陷，会导致当矿池服务器升级时，无法自动重新连接到矿池。如果你的 ZIL 算力突然消失，请手动重启你的挖矿软件。你需要每次都这么做，直到 GMiner 的开发者修复这个问题。你还可以使用别的挖矿软件，或使用兼容模式，<guide>请参照我们的指南</guide>。"
+    },
+    "e9_issue": {
+      "attention": "请注意 ZIL 矿工们",
+      "detail": "2023年2月26日，我们宣布了对E9 Pro ASIC挖掘ZIL的功能。不幸的是，事实证明E9 Pro从未被支持，它仅仅产生了无效的份额，没有为矿池奖励做出贡献。通常，无效份额会被拒绝，但是在某些情况下，软件缺陷导致无效份额被允许通过。<br/><br/>E9 Pro的死负载的奖励按照PPLNS奖励方案进行分配和支付，鉴于E9 Pro ASIC没有为矿池做出贡献，普通矿工最终通过平均减少5-10％的奖励来代替它们。<b>为了弥补这一损失，我们将在2023年3月18日至2023年4月18日这整个月中，为我们的Zilliqa（ZIL）矿池不收取合并矿池+运营费用，大约相当于19％。</b><br/><br/><reddit_link>阅读此处的完整声明以获取更多信息。</reddit_link>"
+    },
+    "zil_upgrade": {
+      "attention": "请注意 ZIL 矿工们",
+      "detail": "在4月25日时, ZIL 网络将会进行一个大更新。<br/>这将会让ZIL无法挖矿大约一天。<br/><br/><zil_link>阅读 Zilliqa 官方公告。</zil_link>"
+    },
+    "zil_delist": {
+      "attention": "Zilliqa (ZIL) 已经下线",
+      "detail": "在发出2周的公告后，我们已经于5月20日关闭了 Zilliqa (ZIL) 矿池。<br/>如果你有疑惑，或想了解接下来的计划，请阅读我们的<reddit_link>公告</reddit_link>。"
+    },
+    "xch_fork": {
+      "attention": "Chia (XCH) 七月软分叉提醒",
+      "detail": "Chia区块链网络在第3,886,635个区块进行了软分叉。如果您正在使用Chia节点进行挖矿，您必须将Chia节点软件更新到1.8.0版本或更高版本。否则，您可能会生成无效的区块。<br/><br/>如果您是FlexFarmer的用户并且正在使用我们提供的区块链桥接服务，则无需更新软件。"
+    }
   },
   "payout_only_mode_note": {
     "title": "矿池目前处于支付模式",
